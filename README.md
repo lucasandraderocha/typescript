@@ -2,12 +2,14 @@
 
 ## Módulos do curso
 
-- [ ] 0.0 - Introdução ↴
+- [ ] 0.0 - Introdução →
+
+- [ ] 0.1 - Typescript para Iniciantes ↴
   - [ ] Types
   - [ ] Annotations
   - [ ] Ferramentas
 
-- [ ] 0.1 - Typescript para Iniciantes ↴
+- [ ] 0.2 - Typescript Básico ↴
   - [ ] Inference
   - [ ] Data Types
   - [ ] Union
@@ -17,8 +19,8 @@
   - [ ] Any
   - [ ] Null
 
-- [ ] 0.2 - Typescript Básico ↴
-  - [ ] Intanceof
+- [ ] 0.3 - Objetos e Interfaces ↴
+  - [ ] instanceof
   - [ ] DOM
   - [ ] Eventos
   - [ ] Callback
@@ -28,26 +30,25 @@
   - [ ] Assertion
   - [ ] Intersection
 
-- [ ] 0.3 - Objetos e Interfaces ↴
+- [ ] 0.4 - Mais Typescript ↴
   - [ ] Classes
   - [ ] Tuples
   - [ ] Keyof
   - [ ] Objetos
 
-- [ ] 0.4 - Mais Typescript ↴
+- [ ] 0.5 - Desenvolvimento ↴
   - [ ] TSConfig
   - [ ] Module
   - [ ] Declaration Files
   - [ ] Bibliotecas Externas
   - [ ] Ferramentas Front-end
 
-- [ ] 0.5 - Desenvolvimento ↴
+- [ ] 0.6 - Prática Dados ↴
   - [ ] Fetch
   - [ ] Filter
   - [ ] Map
   - [ ] Reduce
   - [ ] User Type Guard
 
-- [ ] 0.6 - Prática Dados ↴
-
 - [ ] 0.7 - Prática DOM ↴
+  - [ ] Slide do tipo Stories
