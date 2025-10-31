@@ -2,12 +2,10 @@
 
 ## Módulos do curso
 
-- [ ] 0.0 - Introdução →
-
-- [ ] 0.1 - Typescript para Iniciantes ↴
-  - [ ] Types
-  - [ ] Annotations
-  - [ ] Ferramentas
+- [x] 0.1 - [Introdução](#introdução-) → ↴
+  - [x] [Types](#types)
+  - [x] [Annotations](#annotations)
+  - [x] [Ferramentas](#ferramentas)
 
 - [ ] 0.2 - Typescript Básico ↴
   - [ ] Inference
@@ -52,3 +50,5 @@
 
 - [ ] 0.7 - Prática DOM ↴
   - [ ] Slide do tipo Stories
+
+## Introdução →
