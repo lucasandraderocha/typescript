@@ -1,81 +1,64 @@
-
-// Padrão Notação
-const produto: string = "1984";
-const preco: number = 99.9;
-
-let categoria = "ficção científica";
-
-categoria = "Distopia";
-
-const livro: {
-  titulo: string;
-  tipo: string;
-  paginas: number;
-  categoria: string;
-  has_stock: boolean;
-  avaliacoes: Array<Object>;
-  metadata: Object;
-  previa: Function;
-} = {
-  titulo: "Garfield",
-  tipo: "Quadrinho",
-  paginas: 180,
-  categoria: "infantil",
-  has_stock: true,
-  avaliacoes: [
-    {
-    usuario: "_3459045234XB",
-    nota: 5,
-    avaliacao: "Muito bom esse livro, meu filho amou"
-  },
-  {
-    usuario: "_41305496639A",
-    nota: 3,
-    avaliacao: "O livro veio rasgado, mas minhas crianças amam lê-lo"
-  }
-],
-  metadata: {id: 12394584512, charGlue: "@5959*"},
-  previa: (usuario: string) => {
-    return {paginas: 20, min_tempo: 30, user: usuario}}
+interface iProduct {
+  id: number;
+  title: string;
+  price: 99;
+  category: Array<string>
+  hasDiscount: boolean;
 }
 
-// Padrão Inferência
+let anotherProduct = "Another Product";
 
-const cidade = "Blumenau"
-const shopping = 5
-
-let tamanho = "Grande"
-
-const localizacao: Object | Number = {
-  cidade: cidade,
-  locais: [shopping, "Parque Ramiro", "Biergarten", "Museu de Blumenau", "Vila Germânica"],
-  dimensao: tamanho,
-  saudacao: () => console.log("Olá pessoal, Sejam Bem vindos.")
+const product: iProduct = {
+  id: 1,
+  title: "Product 1",
+  price: 99,
+  category: ["any"],
+  hasDiscount: false
 }
 
-const geradorMegaSena = (arg: number): Array<Number> => {
-  const cartela: Array<Number> = [];
-  for(let i = 0; cartela.length < 16; i++) {
-    let mark: number = arg * Math.floor(Math.random() * 10);
-    let arrMarkBuffer: Array<Number> = []
-    if(mark <= 0 || mark > 60) {
-      arrMarkBuffer.pop()
-      cartela.pop()
-    }
-      else {arrMarkBuffer.push(mark)
-        cartela.push(mark)
-      }
-  }
-  return cartela;
-} 
+
+console.log({
+  product,
+  anotherProduct
+});
 
 
-console.log(geradorMegaSena(8))
+function somar(a:number, b: number): number {
+  return a + b;
+}
+
+console.log(somar(1,2));
+
 
 // Exercícios
-//  Conserte a função com typescript
-function normalizarTexto(texto: string): String {
-  return texto.trim().toLowerCase();
+// Corrigir função
+function normalizarTexto(texto: string) {
+  return texto.trim().toLowerCase()
 }
 
-console.log(normalizarTexto("HellO World! :-  )", 9))
+// Corrigir Aplicação
+const input = document.querySelector("input");
+
+
+const total = localStorage.getItem("total");
+
+if(input && total) {
+input.value = total;
+calcularGanho(Number(input?.value));
+}
+
+function calcularGanho(value: number) {
+  const p = document.querySelector("p");
+  if(p)
+  p.innerText = `ganho total: ${value + 100 - value * 0.2}`;
+}
+
+function totalMudou() {
+  if(input){
+    localStorage.setItem("total", input.value)
+    calcularGanho(Number(input.value));
+  }
+}
+
+
+input?.addEventListener("keyup", totalMudou);

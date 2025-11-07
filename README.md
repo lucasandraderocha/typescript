@@ -8,14 +8,14 @@
   - [x] [Ferramentas](#ferramentas)
 
 - [ ] 0.2 - Typescript Básico ↴
-  - [ ] Inference
-  - [ ] Data Types
-  - [ ] Union
-  - [ ] Type
-  - [ ] Interface
-  - [ ] Arrays
-  - [ ] Any
-  - [ ] Null
+  - [x] [Inference](#inference)
+  - [x] [Data Types](#data-type)
+  - [x] [Union](#union)
+  - [x] [Type](#type)
+  - [x] [Interface](#interface)
+  - [ ] [Arrays](#arrays)
+  - [ ] [Any](#any)
+  - [ ] [Null](#null)
 
 - [ ] 0.3 - Objetos e Interfaces ↴
   - [ ] instanceof
