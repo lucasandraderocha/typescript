@@ -58,6 +58,6 @@ console.log(geradorMegaSena(8));
 function normalizarTexto(texto) {
     return texto.trim().toLowerCase();
 }
-console.log(normalizarTexto("HellO World! :- )"));
+console.log(normalizarTexto("HellO World! :-  )", 9));
 export {};
 //# sourceMappingURL=script.js.map

@@ -78,4 +78,4 @@ function normalizarTexto(texto: string): String {
   return texto.trim().toLowerCase();
 }
 
-console.log(normalizarTexto("HellO World! :-  )"))
+console.log(normalizarTexto("HellO World! :-  )", 9))
