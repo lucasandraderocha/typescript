@@ -1,15 +1,15 @@
 const produtos = [
   {
     produto: "Fifa 14",
-    tipo: "jogo",
+    categoria: "jogo",
   },
   {
     produto: "Senhor dos Anéis",
-    tipo: "livro",
+    categoria: "livro",
   },
   {
     produto: "Mortal Kombat X",
-    tipo: "jogo",
+    categoria: "jogo",
   },
 ];
 
@@ -19,6 +19,6 @@ function filterBook(obj, type, filter) {
   });
 }
 
-const filteredBooks = filterBook(produtos, "tipo", "livro");
+const filteredBooks = filterBook(produtos, "categoria", "livro");
 
 console.log(filteredBooks);

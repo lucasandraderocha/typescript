@@ -2,7 +2,7 @@
 
 ## Módulos do curso
 
-- [x] 0.1 - [Introdução](#introdução-) → ↴
+- [x] 0.1 - [Introdução](#introdução) → ↴
   - [x] [Types](#types)
   - [x] [Annotations](#annotations)
   - [x] [Ferramentas](#ferramentas)
@@ -51,4 +51,10 @@
 - [ ] 0.7 - Prática DOM ↴
   - [ ] Slide do tipo Stories
 
-## Introdução →
+## Introdução
+O *Typescript* é um Superset feito para adicionar camadas de segurança ao Javascript adicionando uma série de complementos à linguagem como: Sistema de [Tipos](#types), Genéricos, Narrowing, Tipos Estruturados, etc. Entretanto, ele não é executado diretamente nos navegadores, o código é "traduzido"(transpilado) para *Javascript* Padrão, onde aí sim é executado. O *Typescript* atua como um analisador sintático, previnindo erros de lógica e sintaxes antes mesmo da execução.
+
+## Types
+Uma das principais habilidades do TypeScript é seu *Type Check System*, que ajuda a identificar inconsistências e erros de tipo antes da execução. É aqui que entramos no conceito de *Inferência de Tipos*.
+
+Pela sua natureza, o TypeScript infere automaticamente os tipos primitivos de variáveis baseando-se no valor inicial atribuído. Isso garante, por exemplo, que uma variável iniciada com texto seja tratada como `string`. Entretanto, quando a inferência não é o suficiente ou desejada, o Typescript permite a *Anotação Explícita de Tipos* para garantir total controle sobre o código.
