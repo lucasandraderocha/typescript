@@ -7,19 +7,19 @@
   - [x] [Annotations](#annotations)
   - [x] [Tools](#tools)
 
-- [ ] 0.2 - [Typescript Básico](#typescript-básico) ↴
+- [x] 0.2 - [Typescript Básico](#typescript-básico) ↴
   - [x] [Inference &¨Annotation](#inference-annotation)
   - [x] [Data Types](#data-type)
   - [x] [Union](#union)
   - [x] [Type](#type)
   - [x] [Interface](#interface)
-  - [ ] [Arrays](#arrays)
-  - [ ] [Any](#any)
-  - [ ] [Null](#null)
+  - [x] [Arrays](#arrays)
+  - [x] [Any](#any)
+  - [x] [Null e Undefined](#null)
 
 - [ ] 0.3 - Objetos e Interfaces ↴
-  - [ ] instanceof
-  - [ ] DOM
+  - [x] instanceof
+  - [x] DOM
   - [ ] Eventos
   - [ ] Callback
   - [ ] Generics

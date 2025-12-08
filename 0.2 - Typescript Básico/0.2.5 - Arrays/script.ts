@@ -1,104 +1,49 @@
-interface ProductInterface {
-  title: string;
-  price: number;
-  hasKeyboard: boolean;  
-}
+const api = `https://api.origamid.dev/json/cursos.json`
 
-type ProductType =  {
-  title: string;
-  price: number;
-  hasKeyboard: boolean;  
-}
-
-const filledData = (data: ProductInterface) => {
-  return document.body.innerHTML += `
-    <div style="font-family:helvetica; color: #333; ">
-      <h2>${data.title}</h2>
-      <ul style="list-style-type: none;">
-        <li>${data.price}</li>
-        <li><strong>${data.hasKeyboard ? "sim" : "não"}</strong></li>
-      </ul>
-    </div>
-  `
- }
-
- filledData({
-  title: "Notebook",
-  price: 2500,
-  hasKeyboard: true
- });
-
-  filledData({
-  title: "Alienware",
-  price: 5000,
-  hasKeyboard: false
- })
-
- type Category = "gamer" | "programming" | "casual";
-
- const categoryPrint = (arg: Category): string => {
-    if(arg === "gamer")
-      throw "<Gamer>: Está categoria foi descontinuada.";
-
-    return arg
- }
-
-//  console.log(categoryPrint("gamer"))
-
-//  Exercícios
-//  Defina a interface da API: https://api.origamid.dev/json/notebook.json e mostre os dados na tela.
-
-async function productFetch() {
-  const api = "https://api.origamid.dev/json/notebook.json"
-  const res = await fetch(api);
-  const json = await res.json();
-  console.log(json)
-  showProduct(json)
-}
-
-productFetch()
-interface Empresa {
-    fundacao: number;
-    nome: string;
-    pais: string;
-  };
-
-interface OrigamidInterface {
-  descricao: string;
-  empresaFabricante: Empresa;
-  empresaMontadora: Empresa;
-  garantia: string | number;
+interface Cursos {
+  aulas: number;
+  gratuito: boolean;
+  horas: number;
+  idAulas: Array<number>;
+  nivel: "iniciante" | "avancado";
   nome: string;
-  preco: number;
-  seguroAcidentes: boolean;
+  tags: Array<string>;
 }
 
 
-function showProduct(data: OrigamidInterface) {
-  return document.body.innerHTML += 
-    `<div>
-        <h2>${data.nome}</h2>
-        <ul style="list-style-type: none;">
-          <li>${data.preco}</li>
-          <li>${data.descricao}</li>
-          <li>
-            Empresa Fabricante:
-            <ul>
-              <li>${data.empresaFabricante.nome}</li>
-              <li>${data.empresaFabricante.fundacao}</li>
-              <li>${data.empresaFabricante.pais}</li>
-            </ul>
-          </li>
-          <li>            
-            Empresa Montadora:
-            <ul>
-              <li>${data.empresaMontadora.nome}</li>
-              <li>${data.empresaMontadora.fundacao}</li>
-              <li>${data.empresaMontadora.pais}</li>
-            </ul>
-          </li>
-          <li>${data.garantia}</li>
-          <li><strong>${data.seguroAcidentes ? "sim" : "não"}</strong></li>
+
+async function fetchCursos() {
+  const res = await fetch(api)
+  const data = await res.json()
+  console.log(data)
+  displayCursos(data)  
+}
+
+fetchCursos()
+
+
+function displayCursos(data: Cursos[]) {
+  data.forEach(curso => {
+    return document.body.innerHTML += `
+    <div>
+      ${curso.nivel === "iniciante" ? `<h1 style="background: blue; color: white;">${curso.nome}</h1>`:`<h1 style="background: red; color: white;">${curso.nome}</h1>`}
+      <h2>${curso.gratuito ? "Gratuito": "Pago"}</h2>
+      <span>${curso.horas} horas</span>
+      <p>${curso.aulas} aulas</p>
+      <div>
+        <p>Aulas:</p>
+        <ul>
+          ${curso.idAulas.map( aula => {
+            return `<li>${aula} - Aula</li>`
+          })}
         </ul>
+      </div>
+      <div>
+          <p>Tag</p>
+          ${curso.tags.map(tag => {
+            return `<span> #${tag}</span>`
+          })}
+      </div>
     </div>`
-  }
+  })
+}
