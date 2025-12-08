@@ -8,7 +8,7 @@
   - [x] [Tools](#tools)
 
 - [ ] 0.2 - [Typescript Básico](#typescript-básico) ↴
-  - [x] [Inference](#inference)
+  - [x] [Inference &¨Annotation](#inference-annotation)
   - [x] [Data Types](#data-type)
   - [x] [Union](#union)
   - [x] [Type](#type)

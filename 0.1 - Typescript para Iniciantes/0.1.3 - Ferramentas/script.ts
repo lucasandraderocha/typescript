@@ -6,4 +6,4 @@
 const sum = (a:number,b:number) => a + b;
 
 const result = sum(10,1)
-console.log(result); // 11 
+console.log(result); // 11

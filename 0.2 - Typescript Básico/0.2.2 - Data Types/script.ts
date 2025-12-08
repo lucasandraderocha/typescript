@@ -1,19 +1,7 @@
-const objQuote = new String("Front End");
-const quote = String("Front End");
-const quota = "Front End";
+const xFrase = new String("Nova frase");
+const yFrase = String("Outra Frase");
+const zFrase = "Uma outra Frase";
 
-
-console.log(typeof quota)
-console.log(typeof objQuote);
-console.log(typeof quote);
-
-console.log(objQuote[1])
-
-if(typeof objQuote === "string") {
-  console.log("Seu tipo é String");
-  
-}else {
-  console.log("Seu tipo não é String");
-  
-}
-
+console.log(typeof xFrase)
+console.log(typeof yFrase)
+console.log(typeof zFrase)
