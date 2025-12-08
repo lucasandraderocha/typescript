@@ -13,25 +13,23 @@ if (isNumber(220)) {
 }
 const btn = document.querySelector("button");
 btn?.click();
-//  Exercícios
-let toConvert = 4;
+// Exercícios
 // 1 - Crie uma função chamada toNumber
-const toNumber = (arg) => {
-    //  2 - Verifique se:
-    switch (typeof arg) {
-        //  3 - Verifique se: é igual uma string
-        case "string":
-            return Number(arg);
-            break;
-        //  3 - Verifique se: é igual uma number
-        case "number":
-            return arg;
-            break;
-        //  4 - Verifique se: em nenhum dos caso retorne um erro utilizando throw
-        default:
-            throw "Use: <args> must be a number or a string";
+// 2 - A função pode receber number | string
+// 3 - Se a função receber um number, retorne o número
+// 4 - Se a função receber uma string, retorne o número
+// 5 - Se ela receber algo diferente, retorne um erro. (throw "value deve ser um número ou uma string")
+function toNumber(arg) {
+    if (typeof arg === "number") {
+        return arg;
     }
-};
-console.log(toNumber(toConvert));
+    else if (typeof arg === "string" && arg.charCodeAt(0) >= 48 && arg.charCodeAt(0) <= 57) {
+        return Number(arg);
+    }
+    else {
+        throw "value deve ser um número | string";
+    }
+}
+console.log(toNumber("2s"));
 export {};
 //# sourceMappingURL=script.js.map
