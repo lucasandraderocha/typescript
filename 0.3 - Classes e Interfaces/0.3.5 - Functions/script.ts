@@ -1,19 +1,15 @@
-// Function Overloads 
-function unityConverter(num: number): string;
-function unityConverter(num: number, unity: "mm"| "cm"): number;
-function unityConverter(num: number, unity?: "mm" | "cm"): number | string {
-  if(typeof unity === "undefined") {
+function fn(argv: string): object;
+function fn(argv: string, argc: "text"): object;
+function fn(argv: string, argc: "json"): object;
+function fn(argv: string, argc?: "json" | "text"): string | object {
+  if (argc) return {};
+  const postArg = {
+    TextDecoder: argv,
+    json: { argv },
+  };
 
-    return `Resultado: ${num}mm`
-  }
-
-  const unities = {
-    mm: {result: num * 10, unity: "mm"},
-    cm: {result: num / 10, unity: "cm"},
-  }
-
-  return unities[unity].result
+  return postArg[argc];
 }
 
-console.log(unityConverter(9, "cm"))
-console.log(unityConverter(9))
+console.log(fn("url.com.br/", "json"));
+console.log(fn("url.com.pt/"));

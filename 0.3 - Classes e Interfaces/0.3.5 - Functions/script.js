@@ -1,14 +1,13 @@
-function unityConverter(num, unity) {
-    if (typeof unity === "undefined") {
-        return `Resultado: ${num}mm`;
-    }
-    const unities = {
-        mm: { result: num * 10, unity: "mm" },
-        cm: { result: num / 10, unity: "cm" },
+function fn(argv, argc) {
+    if (argc)
+        return {};
+    const postArg = {
+        TextDecoder: argv,
+        json: { argv },
     };
-    return unities[unity].result;
+    return postArg[argc];
 }
-console.log(unityConverter(9, "cm"));
-console.log(unityConverter(9));
+console.log(fn("url.com.br/", "json"));
+console.log(fn("url.com.pt/"));
 export {};
 //# sourceMappingURL=script.js.map
