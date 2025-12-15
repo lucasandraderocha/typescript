@@ -20,11 +20,12 @@
 - [ ] 0.3 - Objetos e Interfaces ↴
   - [x] instanceof
   - [x] DOM
-  - [ ] Eventos
-  - [ ] Callback
-  - [ ] Generics
-  - [ ] Functions
-  - [ ] Type Guard
+  - [x] Eventos
+  - [x] Callback
+  - [x] Generics
+  - [x] Functions
+  - [x] Type Guard
+  - [x] Unknown
   - [ ] Assertion
   - [ ] Intersection
 
