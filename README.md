@@ -17,7 +17,7 @@
   - [x] [Any](#any)
   - [x] [Null e Undefined](#null)
 
-- [ ] 0.3 - Objetos e Interfaces ↴
+- [x] 0.3 - Objetos e Interfaces ↴
   - [x] instanceof
   - [x] DOM
   - [x] Eventos
@@ -27,8 +27,8 @@
   - [x] Type Guard
   - [x] Unknown
   - [x] Assertion
-  - [ ] Destructuring
-  - [ ] Intersection
+  - [x] Destructuring
+  - [x] Intersection
 
 - [ ] 0.4 - Mais Typescript ↴
   - [ ] Classes
