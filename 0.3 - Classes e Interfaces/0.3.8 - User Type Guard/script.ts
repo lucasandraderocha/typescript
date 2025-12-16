@@ -1,57 +1,107 @@
-async function fetchCursos() {
+const fetchCourse = async () => {
   const res = await fetch("https://api.origamid.dev/json/cursos.json");
   const json = await res.json();
-  handleCursos(json);
-  handleAlt(json);
-}
-fetchCursos();
 
-interface Curso {
+  handleCourse(json);
+};
+
+fetchCourse();
+
+const handleCourse = (data: unknown) => {
+  if (Array.isArray(data)) {
+  }
+};
+
+//  Type Predicate
+function isString(data: unknown): data is string {
+  return typeof data === "string";
+}
+
+function handleData(data: unknown) {
+  if (isString(data)) {
+    // console.log(data.isWellFormed());
+  }
+}
+
+handleData("foo");
+handleData("bar");
+
+const fetchProduct = async () => {
+  const res = await fetch("https://api.origamid.dev/json/notebook.json");
+  const json = await res.json();
+
+  handleProduct(json);
+};
+fetchProduct();
+
+interface Product {
   nome: string;
-  horas: number;
-  tags: string[];
+  price: number;
 }
 
-function isCurso(data: unknown): data is Curso {
-  if (data && typeof data === "object" && "nome" in data && "horas" in data) {
+const isProduct = (data: unknown): data is Product => {
+  if (data && typeof data === "object" && "nome" in data && "preco" in data) {
     return true;
   } else {
     return false;
   }
-}
+};
 
-// Versão Piorada
-function handleCursos(data: unknown) {
-  if (data instanceof Array) {
-    data.map(item => {
-      if (isCurso(item)) {
-        document.body.innerHTML += `
-        <div>
-          <h1>${item.nome}</h1>
-          <span>${item.horas}h</span>
-          <ul>
-            ${item.tags.map(tag => {
-              return `<li>${tag}</li>`;
-            })}
-          </ul>
-        </div>
-        `;
-      }
-    });
+const handleProduct = (data: unknown) => {
+  if (isProduct(data)) {
+    // console.log("YOOO");
   }
+};
+
+// Exercicio
+
+const fetchOtherProducts = async () => {
+  const res = await fetch("https://fakestoreapi.com/products");
+  const json = await res.json();
+  // console.log(JSON.stringify(json[0], null, 2));
+  handleOtherProducts(json);
+};
+
+fetchOtherProducts();
+
+interface OtherProduct {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  imagem: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
 }
 
-// Versão Melhor
-function handleAlt(data: unknown) {
+const isOtherProduct = (data: unknown): data is OtherProduct => {
+  if (data && typeof data === "object" && "title" in data && "price" in data) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const handleOtherProducts = (data: unknown) => {
   if (Array.isArray(data)) {
-    data.filter(isCurso).forEach(item => {
-      document.body.innerHTML += `
-        <div>
-          <h2>${item.nome}</h2>
-          <span>${item.horas}h</span>
-          <span>${item.tags.join(", ")}</span>
+    data.filter(isOtherProduct).forEach(
+      item =>
+        (document.body.innerHTML += `
+      <div>
+        <span>${item.id}</span>
+        <h2>${item.title}</h2>
+        <p>${item.description}</p>
+        <span>${(item.price * 5).toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        })}</span><br>
+        <span>${item.category}</span><br>
+        <span>${item.rating.count}</span>
         </div>
-      `;
-    });
+      `)
+    );
   }
-}
+};

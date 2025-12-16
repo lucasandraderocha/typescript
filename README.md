@@ -26,7 +26,8 @@
   - [x] Functions
   - [x] Type Guard
   - [x] Unknown
-  - [ ] Assertion
+  - [x] Assertion
+  - [ ] Destructuring
   - [ ] Intersection
 
 - [ ] 0.4 - Mais Typescript ↴

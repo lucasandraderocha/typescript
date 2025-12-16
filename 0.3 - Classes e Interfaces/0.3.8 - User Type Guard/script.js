@@ -1,51 +1,75 @@
-async function fetchCursos() {
+const fetchCourse = async () => {
     const res = await fetch("https://api.origamid.dev/json/cursos.json");
     const json = await res.json();
-    handleCursos(json);
-    handleAlt(json);
+    handleCourse(json);
+};
+fetchCourse();
+const handleCourse = (data) => {
+    if (Array.isArray(data)) {
+    }
+};
+//  Type Predicate
+function isString(data) {
+    return typeof data === "string";
 }
-fetchCursos();
-function isCurso(data) {
-    if (data && typeof data === "object" && "nome" in data && "horas" in data) {
+function handleData(data) {
+    if (isString(data)) {
+        // console.log(data.isWellFormed());
+    }
+}
+handleData("foo");
+handleData("bar");
+const fetchProduct = async () => {
+    const res = await fetch("https://api.origamid.dev/json/notebook.json");
+    const json = await res.json();
+    handleProduct(json);
+};
+fetchProduct();
+const isProduct = (data) => {
+    if (data && typeof data === "object" && "nome" in data && "preco" in data) {
         return true;
     }
     else {
         return false;
     }
-}
-// Versão Piorada
-function handleCursos(data) {
-    if (data instanceof Array) {
-        data.map(item => {
-            if (isCurso(item)) {
-                document.body.innerHTML += `
-        <div>
-          <h1>${item.nome}</h1>
-          <span>${item.horas}h</span>
-          <ul>
-            ${item.tags.map(tag => {
-                    return `<li>${tag}</li>`;
-                })}
-          </ul>
-        </div>
-        `;
-            }
-        });
+};
+const handleProduct = (data) => {
+    if (isProduct(data)) {
+        // console.log("YOOO");
     }
-}
-// Versão Melhor
-function handleAlt(data) {
+};
+// Exercicio
+const fetchOtherProducts = async () => {
+    const res = await fetch("https://fakestoreapi.com/products");
+    const json = await res.json();
+    // console.log(JSON.stringify(json[0], null, 2));
+    handleOtherProducts(json);
+};
+fetchOtherProducts();
+const isOtherProduct = (data) => {
+    if (data && typeof data === "object" && "title" in data && "price" in data) {
+        return true;
+    }
+    else {
+        return false;
+    }
+};
+const handleOtherProducts = (data) => {
     if (Array.isArray(data)) {
-        data.filter(isCurso).forEach(item => {
-            document.body.innerHTML += `
-        <div>
-          <h2>${item.nome}</h2>
-          <span>${item.horas}h</span>
-          <span>${item.tags.join(", ")}</span>
+        data.filter(isOtherProduct).forEach(item => (document.body.innerHTML += `
+      <div>
+        <span>${item.id}</span>
+        <h2>${item.title}</h2>
+        <p>${item.description}</p>
+        <span>${(item.price * 5).toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+        })}</span><br>
+        <span>${item.category}</span><br>
+        <span>${item.rating.count}</span>
         </div>
-      `;
-        });
+      `));
     }
-}
+};
 export {};
 //# sourceMappingURL=script.js.map
