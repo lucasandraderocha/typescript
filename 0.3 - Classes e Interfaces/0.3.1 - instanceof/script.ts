@@ -1,44 +1,60 @@
-class Product{
-  model: string;
-  price: number;
-  releasedAt: string;
-
-  constructor(model: string, price: number, releasedAt: string) {
-    this.model = model;
-    this.price = price;
-    this.releasedAt = releasedAt;
+class Animal {
+  respirar() {
+    return "Ar para dentro...";
   }
-
-  setPrice(newPrice: number) {
-    return this.price = newPrice;
+  andar() {
+    return "tap tap tap...";
   }
 }
 
-const cellphone = new Product("Galazy Z6", 3000, "04-05-16, 13:00:00 UTM")
-const game = new Product("Playstation", 1000, "02-09-96, 00:00:00 UTM")
-
-// console.log({cellphone, game})
-// console.log(game instanceof Product)
-// console.log(cellphone instanceof Product)
-
-class Smartphone extends Product{
-  brand: string;
-  constructor(model:string, price:number, releasedAt:string, brand: string) {
-    super(model, price, releasedAt);
-    this.brand = brand;
+class Cachorro extends Animal {
+  latir() {
+    return "Au au!";
   }
 }
 
+const meuPet = new Cachorro();
 
-const appel = new Smartphone("iPon K", 999999, "18-09-18, 22:00:00UTM", "Appel")
+console.log(meuPet.latir());
+console.log(meuPet.andar());
 
-// console.log(appel)
-
-const link= document.getElementById("origamid")
-
-
-if(link instanceof HTMLAnchorElement) {
-  link.href = link.href.replace("https://", "https://")
+class Carro {
+  dirigir() {
+    return "Vrum Vrum";
+  }
 }
-console.log(link?.getAttribute("href"))
-console.log(link instanceof HTMLElement)
+
+class Aviao {
+  voar() {
+    return "Decolando!";
+  }
+}
+
+function transportar(veiculo: Aviao | Carro) {
+  if (veiculo instanceof Carro) {
+    console.log(veiculo.dirigir());
+  } else {
+    console.log(veiculo.voar());
+  }
+}
+
+const tecoteco = new Aviao();
+const corsinha = new Carro();
+
+transportar(corsinha);
+
+interface Corsinha {
+  dirigir: string;
+}
+
+function returnValue(veiculo: Corsinha | Carro) {
+  if (veiculo instanceof Carro) {
+    return "VRUUUUUUUUUUUUUUUUM";
+  } else {
+    return "vrum vrum vrum";
+  }
+}
+
+let corsinhaAmarelo = new Carro();
+
+console.log(returnValue(corsinhaAmarelo));
