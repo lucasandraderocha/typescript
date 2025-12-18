@@ -1,60 +1,124 @@
-class Animal {
-  respirar() {
-    return "Ar para dentro...";
+class Product {
+  type: string;
+  title: string;
+  price: number;
+  constructor(type: string, title: string) {
+    this.title = title;
+    this.type = type;
+    this.price = 0;
   }
-  andar() {
-    return "tap tap tap...";
+
+  getProductType() {
+    return `Your product type is: ${this.type}`;
   }
-}
 
-class Cachorro extends Animal {
-  latir() {
-    return "Au au!";
+  getProductTitle() {
+    return `Your product title is: ${this.title}`;
   }
-}
-
-const meuPet = new Cachorro();
-
-console.log(meuPet.latir());
-console.log(meuPet.andar());
-
-class Carro {
-  dirigir() {
-    return "Vrum Vrum";
+  setProductTitle(newTitle: string) {
+    return (this.title = newTitle);
   }
-}
 
-class Aviao {
-  voar() {
-    return "Decolando!";
+  setProductPrice(newPrice: number) {
+    return (this.price = newPrice);
   }
-}
-
-function transportar(veiculo: Aviao | Carro) {
-  if (veiculo instanceof Carro) {
-    console.log(veiculo.dirigir());
-  } else {
-    console.log(veiculo.voar());
+  getProductPrice() {
+    return `Your product cost around: ${this.price.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    })}`;
   }
 }
 
-const tecoteco = new Aviao();
-const corsinha = new Carro();
+class Game extends Product {
+  title: string;
+  type: string;
+  meta: object;
+  constructor(type: string, title: string) {
+    super(type, title);
+    this.title = title;
+    this.type = type;
+    this.meta = {};
+  }
 
-transportar(corsinha);
-
-interface Corsinha {
-  dirigir: string;
-}
-
-function returnValue(veiculo: Corsinha | Carro) {
-  if (veiculo instanceof Carro) {
-    return "VRUUUUUUUUUUUUUUUUM";
-  } else {
-    return "vrum vrum vrum";
+  setMeta(
+    genre: string,
+    localMulti: "local" | "multi",
+    crossPlataform: boolean,
+    mainPlataform: string,
+    description: string
+  ) {
+    return (this.meta = {
+      ...this.meta,
+      genre,
+      localMulti,
+      crossPlataform,
+      mainPlataform,
+      description,
+    });
   }
 }
 
-let corsinhaAmarelo = new Carro();
+class Book extends Product {
+  title: string;
+  type: string;
+  meta: object;
+  constructor(type: string, title: string) {
+    super(type, title);
+    this.title = title;
+    this.type = type;
+    this.meta = {};
+  }
 
-console.log(returnValue(corsinhaAmarelo));
+  setMeta(
+    genre: string,
+    pages: number,
+    limitedEdition: boolean,
+    description: string,
+    publisher: string
+  ) {
+    return (this.meta = {
+      ...this.meta,
+      genre,
+      pages,
+      limitedEdition,
+      description,
+      publisher,
+    });
+  }
+}
+
+const newGame = new Game("Game", "Dark Souls");
+newGame.setMeta(
+  "Souls Like",
+  "local",
+  true,
+  "Plastation",
+  "A beautiful and dark game about dark and souls"
+);
+console.log(newGame);
+
+const newBook = new Book("Book", "Game of Thrones");
+newBook.setProductPrice(45);
+newBook.getProductPrice();
+newBook.setMeta(
+  "Dark Fantasy",
+  670,
+  false,
+  "A Dark Fantasy about a Throne and Dragons",
+  "IDK"
+);
+
+console.log(newBook);
+
+function searchProduct(search: string) {
+  if (search === "Game of throne") {
+    return new Book("Book", "Game of Thrones");
+  }
+  if (search === "Fifa") {
+    return new Game("Game", "Fifa");
+  }
+  return null;
+}
+
+console.log(searchProduct("Fifa"));
