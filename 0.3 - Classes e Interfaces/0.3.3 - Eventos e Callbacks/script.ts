@@ -1,11 +1,27 @@
-//  const btn = document.querySelector("button");
+// const button = document.querySelector("button");
 
-//  function handleClick(this: HTMLButtonElement, e: MouseEvent) {
-//   console.log(this)
-//  }
- 
-//  btn?.addEventListener("click", handleClick)
+// console.log(button);
 
+// button?.addEventListener("click", () => {
+//   console.log(button);
+// });
+
+// function handleEvent(event: KeyboardEvent): void;
+// function handleEvent(event: MouseEvent): void;
+// function handleEvent(event: Event): void;
+// function handleEvent(event: Event | MouseEvent | KeyboardEvent): void {
+//   if (event instanceof KeyboardEvent) {
+//     console.log(event.key);
+//   } else if (event instanceof MouseEvent) {
+//     console.log({ clientX: event.clientX, clientY: event.clientY });
+//   }
+// }
+
+// document.documentElement.addEventListener("mousedown", handleEvent);
+// document.documentElement.addEventListener("touchstart", handleEvent);
+// document.documentElement.addEventListener("keydown", handleEvent);
+
+// Exercício
 
 // Estado dos elementos
 
@@ -19,26 +35,25 @@
 // aria-expanded="true" em button
 // aria-label="Fechar Menu" em button
 
-const nav = document.querySelector("#nav");
-const btnMobile = document.querySelector("#btn-mobile")
-
-
-// Versão 2
-function toggleMenu(event: Event) {
-  const button = event.currentTarget as HTMLButtonElement | null;
-
-  if(button instanceof HTMLElement && nav) {
-    nav?.classList.toggle("active");
-    const active = nav.classList.contains("active");
-    if(active) {
-      button.setAttribute("aria-expanded", "true")
-      button.setAttribute("aria-label", "Abrir Menu")
-    }else {
-      button.setAttribute("aria-expanded", "false")
-      button.setAttribute("aria-label", "Fechar Menu")
+const btnMobile = document.querySelector<HTMLButtonElement>("#btn-mobile");
+const nav = document.querySelector<HTMLElement>("#nav");
+function handleEvent(event: TouchEvent): void;
+function handleEvent(event: PointerEvent): void;
+function handleEvent(event: MouseEvent): void;
+function handleEvent(
+  event: Event | MouseEvent | PointerEvent | TouchEvent
+): void {
+  const button = event.currentTarget;
+  nav?.classList.toggle("active");
+  if (button instanceof HTMLElement) {
+    if (nav?.classList.contains("active")) {
+      button.setAttribute("aria-expanded", "true");
+      button.setAttribute("aria-label", "Fechar Menu");
+    } else {
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-label", "Abrir Menu");
     }
-
   }
 }
 
-btnMobile?.addEventListener("pointerdown", toggleMenu)
+btnMobile?.addEventListener("pointerdown", handleEvent);
