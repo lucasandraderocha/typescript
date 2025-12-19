@@ -1,62 +1,125 @@
-// const logGeneric = <T>(arg: T): T => {
-//   return arg
+// function add<T>(a: T, b: T) {
+//   return { a, b };
 // }
-// console.log(logGeneric<string[]>(["Maçã", "Pêra", "Melância"]))
-// console.log(logGeneric<number[]>([9,9,8]))
-// console.log(logGeneric<object>({list: "list"}))
-// const numeros = [1,2,3,4,5,6,7,8]
-// const frutas = ["fruta a", "fruta b", "fruta c ", "frutas d", "frutas e", "frutas f"]
-// console.log({
-//   numeros, frutas
-// })
-// const firstFive = <T>(list: T[]): T[] => {
-//   return list.slice(0,4)
-// }
-// console.log(firstFive<number>(numeros))
-// console.log(firstFive<string>(frutas))
-// const typeOf = () => {
-//   let types = {}
-//   const linkType = <T>(data: T): object => ({
-//     data,
-//     type: typeof data
-//   })
-//   return {
-//     get types() {return types},
-//     type: <T>(data: T): object => linkType(data),
-//   }
-// }
-// const x = typeOf()
-// console.log(x.type("baralho"))
-// console.log(x.type(2))
-// const element = document.createElement("div")
-// element.classList.add("container")
-// element.innerHTML = "Hello, world."
-// const extractTextElement = <T extends HTMLElement>(el: T) => {
-//   return el
-// }
-// function _<T extends Element>(selector: string): T | null {
-//   return document.querySelector(selector)
-// }
-// const div = _<HTMLDivElement>(".container")?.dataset
-// console.dir(div)
-const create = (argv) => {
-    return document.createElement(argv);
-};
-const div = create("div");
-const getData = async (url) => {
-    const res = await fetch(url);
-    return await res.json();
-};
-const notebook = await getData("https://api.origamid.dev/json/notebook.json");
-if (div) {
-    div.innerHTML = String(new Date().toLocaleDateString("pt-BR", {
-        weekday: "short",
-        year: "numeric",
-        month: "numeric",
-        day: "numeric"
-    }));
-    div.innerHTML += notebook.nome;
-    document.body.appendChild(div);
+// console.log(add<number[]>([0, 1, 2, 3, 4], [5, 6, 7, 8, 9]));
+// console.log(add<number>(8, 4));
+function linkedList() {
+    const list = {
+        head: null,
+        tail: null,
+    };
+    function createNode(data, next = null) {
+        return { data, next };
+    }
+    function resultList(message, target, list) {
+        return {
+            message,
+            target,
+            list,
+        };
+    }
+    function appendNode(data) {
+        let newNode = createNode(data);
+        if (list.tail) {
+            list.tail.next = newNode;
+        }
+        else {
+            list.head = newNode;
+        }
+        list.tail = newNode;
+        return resultList({
+            Success: "Appended an item successfully!",
+        }, data, list);
+    }
+    function prependNode(data) {
+        let n = list.head;
+        let newNode = createNode(data);
+        if (!list.tail) {
+            list.head = newNode;
+            list.tail = newNode;
+        }
+        newNode.next = n;
+        list.head = newNode;
+        return resultList({
+            Sucess: "Prepended an item successfully",
+        }, data, list);
+    }
+    function searchNode(data) {
+        let n = list.head;
+        if (!list.tail) {
+            return resultList({
+                Error: "Your list is empty.",
+            }, data, list);
+        }
+        while (n !== null && n.data !== data) {
+            n = n.next;
+        }
+        if (!n) {
+            return resultList({
+                Error: "Your item doesn't exist.",
+            }, data, list);
+        }
+        return resultList({
+            Success: "Your item has been reached.",
+            Item: n,
+        }, data, list);
+    }
+    function removeNode(data) {
+        let n = list.head;
+        if (n?.data === data) {
+            if (list.head === list.tail) {
+                list.head = null;
+                list.tail = null;
+                return resultList({
+                    Success: "Your list is fully empty.",
+                    Item: n,
+                }, data, list);
+            }
+            else {
+                list.head = n.next;
+                return resultList({
+                    Success: "Your item has been successfully deleted.",
+                    Item: n,
+                }, data, list);
+            }
+        }
+        while (n?.next !== null && n?.next.data !== data) {
+            if (typeof n?.next !== "undefined")
+                n = n?.next;
+        }
+        if (n.next !== null) {
+            if (n.next === list.tail) {
+                list.tail = n;
+            }
+            n.next = n?.next.next;
+            return resultList({
+                Success: "Your item has been successfully deleted",
+                Item: n,
+            }, data, list);
+        }
+        return resultList({
+            Error: "your item doesn't exist",
+        }, data, list);
+    }
+    return {
+        get list() {
+            return list;
+        },
+        append: (data) => appendNode(data),
+        prepend: (data) => prependNode(data),
+        search: (data) => searchNode(data),
+        remove: (data) => removeNode(data),
+    };
 }
+const { list, append, prepend, search, remove } = linkedList();
+append("foo");
+append("baz");
+append("thud");
+append("qux");
+append("quux");
+prepend("bar");
+console.log("Search: ", search("ba"));
+console.log("Remove: ", remove("quux"));
+console.log("List: ", list);
 export {};
 //# sourceMappingURL=script.js.map
