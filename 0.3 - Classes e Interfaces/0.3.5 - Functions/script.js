@@ -1,3 +1,14 @@
+// Never
+function isNever(arg) {
+    throw new Error(arg);
+}
+// isNever("Problema no Código, tente novamente");
+// Void
+function isVoid(a, fixedTo) {
+    let result = a.toFixed(fixedTo);
+    console.log(result);
+}
+isVoid(16, 2);
 function formatDataStrategy(value, format) {
     const toCurrency = (value) => ({
         value: value.toLocaleString("pt-BR", {
@@ -66,5 +77,11 @@ function fnExe(value) {
     }
 }
 console.log(fnExe([19.2, 25.6, 10.02].map(item => item + 2)));
+// interface Baskhara {
+//   delta(a: number,b: number,c:number): number {
+//     return Math.exp(b)
+//   }
+// }
+console.log("Exponencial: ", Math.exp(1));
 export {};
 //# sourceMappingURL=script.js.map

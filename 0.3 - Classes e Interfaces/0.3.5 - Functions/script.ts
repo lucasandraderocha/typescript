@@ -1,3 +1,19 @@
+// Never
+
+function isNever(arg: string): never {
+  throw new Error(arg);
+}
+
+// isNever("Problema no Código, tente novamente");
+
+// Void
+function isVoid(a: number, fixedTo: number): void {
+  let result = a.toFixed(fixedTo);
+  console.log(result);
+}
+
+isVoid(16, 2);
+
 // Function Overloading
 function formatDataStrategy(value: number, format: "currency"): object;
 function formatDataStrategy(value: number, format: "percent"): object;
@@ -76,7 +92,6 @@ type defaultConfig = { timeout: number };
 type fullConfig = { timeout: number; logging: boolean };
 
 //  Exercicios
-
 function fnExe(value: number): number;
 function fnExe(value: string): string;
 function fnExe(value: number[]): string;
@@ -99,3 +114,11 @@ function fnExe(value: string | number | number[]): string | number {
 }
 
 console.log(fnExe([19.2, 25.6, 10.02].map(item => item + 2)));
+
+// interface Baskhara {
+//   delta(a: number,b: number,c:number): number {
+//     return Math.exp(b)
+//   }
+// }
+
+console.log("Exponencial: ", Math.exp(1));
