@@ -43,5 +43,12 @@ function handleEvent(event) {
     }
 }
 btnMobile?.addEventListener("pointerdown", handleEvent);
+const btn = document.querySelector(".btn");
+function thisBtn(event) {
+    console.log(this.classList);
+}
+if (btn instanceof HTMLButtonElement) {
+    btn?.addEventListener("click", thisBtn);
+}
 export {};
 //# sourceMappingURL=script.js.map

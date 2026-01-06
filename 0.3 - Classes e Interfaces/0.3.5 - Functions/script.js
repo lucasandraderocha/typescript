@@ -59,29 +59,20 @@ console.log(buildUrl("www.url.com", {
     m: "m",
 }));
 console.log(buildUrl("www.url.com", ["path", "path"]));
-function fnExe(value) {
-    const roundUpNum = (value) => Math.ceil(value);
-    const roundUpStr = (value) => {
-        const sanitizedValue = Number(value);
-        return String(Math.ceil(sanitizedValue));
-    };
-    const roundUpArr = (value) => value.map(item => Math.ceil(item)).join("-");
-    if (Array.isArray(value)) {
-        return roundUpArr(value);
+function fnExe(argv) {
+    function roundUpNumber(n) {
+        return Math.ceil(n);
     }
-    else if (typeof value === "string") {
-        return roundUpStr(value);
+    function roundUpStr(n) {
+        return String(Math.ceil(Number(n)));
+    }
+    if (typeof argv === "string") {
+        return roundUpStr(argv);
     }
     else {
-        return roundUpNum(value);
+        return roundUpNumber(argv);
     }
 }
-console.log(fnExe([19.2, 25.6, 10.02].map(item => item + 2)));
-// interface Baskhara {
-//   delta(a: number,b: number,c:number): number {
-//     return Math.exp(b)
-//   }
-// }
-console.log("Exponencial: ", (2 ** ));
+console.log(fnExe("45.7"));
 export {};
 //# sourceMappingURL=script.js.map

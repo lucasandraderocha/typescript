@@ -57,3 +57,13 @@ function handleEvent(
 }
 
 btnMobile?.addEventListener("pointerdown", handleEvent);
+
+const btn = document.querySelector(".btn");
+
+function thisBtn(this: HTMLButtonElement, event: MouseEvent) {
+  console.log(this.classList);
+}
+
+if (btn instanceof HTMLButtonElement) {
+  btn?.addEventListener("click", thisBtn);
+}

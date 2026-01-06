@@ -1,23 +1,18 @@
 const fetchedProduct = async () => {
   const res = await fetch("https://fakestoreapi.com/products");
   const json = await res.json();
-  handleProduct(json);
+  console.log(json);
+  let product = handleProduct(json);
+  console.log(product);
 };
+fetchedProduct();
 
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: object;
-}
+type Product = Array<object>;
 
 const handleProduct = (data: Product) => {
-  if ("price" in data) {
-    return data;
-  }
+  return data.filter(item => {
+    return "category" in item && item.category === "men's clothing"
+      ? item
+      : null;
+  });
 };
-
-console.log(fetchedProduct());

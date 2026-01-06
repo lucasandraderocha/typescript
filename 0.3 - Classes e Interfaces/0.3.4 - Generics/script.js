@@ -101,6 +101,15 @@ function linkedList() {
             Error: "your item doesn't exist",
         }, data, list);
     }
+    function* transverseNode(data) {
+        let n = data;
+        if (n) {
+            while (n !== null) {
+                yield n?.data;
+                n = n?.next;
+            }
+        }
+    }
     return {
         get list() {
             return list;
@@ -109,17 +118,31 @@ function linkedList() {
         prepend: (data) => prependNode(data),
         search: (data) => searchNode(data),
         remove: (data) => removeNode(data),
+        transverse: () => transverseNode(list.head),
     };
 }
-const { list, append, prepend, search, remove } = linkedList();
+const { list, append, prepend, search, remove, transverse } = linkedList();
 append("foo");
 append("baz");
 append("thud");
 append("qux");
 append("quux");
 prepend("bar");
+for (let item of [...transverse()]) {
+    console.log("Transversed Item: ", item);
+}
 console.log("Search: ", search("ba"));
 console.log("Remove: ", remove("quux"));
 console.log("List: ", list);
+function extractText(el) {
+    return {
+        text: el.innerText,
+        el,
+    };
+}
+const link = document.createElement("a");
+link.innerText = "Link";
+link.href = "https://www.google.com";
+console.dir(extractText(link).el.href);
 export {};
 //# sourceMappingURL=script.js.map

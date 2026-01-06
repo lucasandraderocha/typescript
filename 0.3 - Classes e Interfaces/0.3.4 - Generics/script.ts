@@ -168,6 +168,17 @@ function linkedList<T>() {
       list
     );
   }
+
+  function* transverseNode(data: NodeLink<T> | null) {
+    let n = data;
+    if (n) {
+      while (n !== null) {
+        yield n?.data;
+        n = n?.next;
+      }
+    }
+  }
+
   return {
     get list() {
       return list;
@@ -176,10 +187,12 @@ function linkedList<T>() {
     prepend: (data: T) => prependNode(data),
     search: (data: T) => searchNode(data),
     remove: (data: T) => removeNode(data),
+    transverse: () => transverseNode(list.head),
   };
 }
 
-const { list, append, prepend, search, remove } = linkedList<string>();
+const { list, append, prepend, search, remove, transverse } =
+  linkedList<string>();
 
 append("foo");
 append("baz");
@@ -187,6 +200,9 @@ append("thud");
 append("qux");
 append("quux");
 prepend("bar");
+for (let item of [...transverse()]) {
+  console.log("Transversed Item: ", item);
+}
 console.log("Search: ", search("ba"));
 console.log("Remove: ", remove("quux"));
 console.log("List: ", list);

@@ -92,33 +92,21 @@ type defaultConfig = { timeout: number };
 type fullConfig = { timeout: number; logging: boolean };
 
 //  Exercicios
-function fnExe(value: number): number;
-function fnExe(value: string): string;
-function fnExe(value: number[]): string;
-function fnExe(value: string | number | number[]): string | number {
-  const roundUpNum = (value: number): number => Math.ceil(value);
-  const roundUpStr = (value: string): string => {
-    const sanitizedValue = Number(value);
-    return String(Math.ceil(sanitizedValue));
-  };
-  const roundUpArr = (value: number[]): string =>
-    value.map(item => Math.ceil(item)).join("-");
+function fnExe(arv: string): string;
+function fnExe(arv: number): number;
+function fnExe(argv: string | number): string | number {
+  function roundUpNumber(n: number): number {
+    return Math.ceil(n);
+  }
+  function roundUpStr(n: string): string {
+    return String(Math.ceil(Number(n)));
+  }
 
-  if (Array.isArray(value)) {
-    return roundUpArr(value);
-  } else if (typeof value === "string") {
-    return roundUpStr(value);
+  if (typeof argv === "string") {
+    return roundUpStr(argv);
   } else {
-    return roundUpNum(value);
+    return roundUpNumber(argv);
   }
 }
 
-console.log(fnExe([19.2, 25.6, 10.02].map(item => item + 2)));
-
-// interface Baskhara {
-//   delta(a: number,b: number,c:number): number {
-//     return Math.exp(b)
-//   }
-// }
-
-console.log("Exponencial: ", 2);
+console.log(fnExe("45.7"));
