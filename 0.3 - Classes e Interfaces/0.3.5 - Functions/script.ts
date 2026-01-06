@@ -121,4 +121,4 @@ console.log(fnExe([19.2, 25.6, 10.02].map(item => item + 2)));
 //   }
 // }
 
-console.log("Exponencial: ", Math.exp(1));
+console.log("Exponencial: ", 2);

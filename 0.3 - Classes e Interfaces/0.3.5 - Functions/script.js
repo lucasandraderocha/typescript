@@ -82,6 +82,6 @@ console.log(fnExe([19.2, 25.6, 10.02].map(item => item + 2)));
 //     return Math.exp(b)
 //   }
 // }
-console.log("Exponencial: ", Math.exp(1));
+console.log("Exponencial: ", (2 ** ));
 export {};
 //# sourceMappingURL=script.js.map
