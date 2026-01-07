@@ -1,5 +1,5 @@
-// const { body } = document;
-// console.log(body);
+const { body } = document;
+console.log(body);
 function handleData({ nome }) {
     return nome;
 }

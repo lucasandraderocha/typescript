@@ -1,40 +1,17 @@
-interface Data {
-  data: {
-    name: string;
-    id: number;
-    price: number;
-  };
-  message: {
-    from: string;
-    date: string;
-    content: string;
-  };
-}
-
-function showProductSpecs(data: Data) {
-  if ("message" in data) {
-    return {
-      data,
-      message: data.message,
-    };
-  } else if ("data.id" in data) {
-    return {
-      data,
-    };
+function test(v: unknown) {
+  if (v instanceof HTMLElement) {
+    let p = document.createElement("p");
+    p.innerText = "Hello world";
+    return v.appendChild(p);
   }
-  return data;
+  if (typeof v === "number") {
+    return v.toFixed(2);
+  }
+  if (typeof v === "string") {
+    return v.toUpperCase();
+  }
 }
 
-const test = showProductSpecs({
-  data: {
-    id: 1,
-    name: "hummel",
-    price: 24,
-  },
-  message: {
-    from: "casca",
-    date: "05-07-19",
-    content: "Content here",
-  },
-});
-console.log(test);
+console.log(test("Olá"));
+console.log(test(100));
+console.log(test(document.body));

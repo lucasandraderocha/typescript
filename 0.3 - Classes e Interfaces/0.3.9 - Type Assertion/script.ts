@@ -13,7 +13,7 @@ interface Product {
 
 async function fetchProduct() {
   const res = await fetch("https://api.origamid.dev/json/notebook.json");
-  return res.json();
+  return res.json() as Promise<Product>;
 }
 
 async function handleProduct() {

@@ -1,29 +1,18 @@
-function showProductSpecs(data) {
-    if ("message" in data) {
-        return {
-            data,
-            message: data.message,
-        };
+function test(v) {
+    if (v instanceof HTMLElement) {
+        let p = document.createElement("p");
+        p.innerText = "Hello world";
+        return v.appendChild(p);
     }
-    else if ("data.id" in data) {
-        return {
-            data,
-        };
+    if (typeof v === "number") {
+        return v.toFixed(2);
     }
-    return data;
+    if (typeof v === "string") {
+        return v.toUpperCase();
+    }
 }
-const test = showProductSpecs({
-    data: {
-        id: 1,
-        name: "hummel",
-        price: 24,
-    },
-    message: {
-        from: "casca",
-        date: "05-07-19",
-        content: "Content here",
-    },
-});
-console.log(test);
+console.log(test("Olá"));
+console.log(test(100));
+console.log(test(document.body));
 export {};
 //# sourceMappingURL=script.js.map

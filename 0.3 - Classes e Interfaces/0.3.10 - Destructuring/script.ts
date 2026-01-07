@@ -1,6 +1,6 @@
-// const { body } = document;
+const { body } = document;
 
-// console.log(body);
+console.log(body);
 
 function handleData({ nome }: { nome: string }) {
   return nome;
